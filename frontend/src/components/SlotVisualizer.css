@@ -1,0 +1,134 @@
+.slot-visualizer {
+  margin: 2rem 0;
+}
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--surface-color);
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.swatch.available { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--success); }
+.swatch.reserved { background: rgba(99, 102, 241, 0.2); border: 1px solid var(--primary-color); }
+.swatch.occupied { background: rgba(239, 68, 68, 0.2); border: 1px solid var(--danger); }
+.swatch.maintenance { background: rgba(245, 158, 11, 0.2); border: 1px solid var(--warning); }
+.swatch.selected { background: var(--primary-color); border: 1px solid #fff; }
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1.25rem;
+}
+
+.slot-card {
+  position: relative;
+  height: 140px;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.slot-card.available {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  cursor: pointer;
+}
+
+.slot-card.available:hover {
+  transform: translateY(-5px);
+  border-color: var(--success);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+}
+
+.slot-card.reserved {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px dashed var(--primary-color);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.slot-card.selected {
+  background: rgba(99, 102, 241, 0.15);
+  border: 2px solid var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.slot-card.occupied {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px dashed rgba(239, 68, 68, 0.3);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.slot-card.maintenance {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px dashed rgba(245, 158, 11, 0.3);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.slot-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.badge.premium {
+  background: linear-gradient(135deg, var(--warning), #ea580c);
+  color: white;
+}
+
+.badge.regular {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.slot-price {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
