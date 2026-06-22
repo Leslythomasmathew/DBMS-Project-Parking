@@ -27,15 +27,19 @@ const PORT = process.env.PORT || 5000;
 
 const { releaseExpiredSlots } = require('./utils/cronJobs');
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  
-  // Kickoff the automated slot flushing engine
-  // CURRENTLY DISABLED BY USER REQUEST
-  // const FIVE_MINUTES = 5 * 60 * 1000;
-  // setInterval(() => {
-  //   releaseExpiredSlots();
-  // }, FIVE_MINUTES);
-  
-  console.log('[SYSTEM INIT] REST API Active. (Auto-Sweeper is DISABLED).');
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    
+    // Kickoff the automated slot flushing engine
+    // CURRENTLY DISABLED BY USER REQUEST
+    // const FIVE_MINUTES = 5 * 60 * 1000;
+    // setInterval(() => {
+    //   releaseExpiredSlots();
+    // }, FIVE_MINUTES);
+    
+    console.log('[SYSTEM INIT] REST API Active. (Auto-Sweeper is DISABLED).');
+  });
+}
+
+module.exports = app;
